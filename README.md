@@ -44,6 +44,9 @@ Initializes an instance of `ServerConnection` and `PeerHandler` upon application
 The `ServerConnection` class manages the connection to the server and communication with it.
 
 #### Constructor
+```java
+public ServerConnection(Actor actor, String configFilePath)
+```
 Initializes a connection to the server by reading the address and port from the configuration file.
 
 #### Methods
@@ -66,6 +69,9 @@ Initializes a connection to the server by reading the address and port from the 
 The `PeerHandler` class manages peer-to-peer connections and keeps track of the peer list.
 
 #### Constructor
+```java
+public PeerHandler()
+```
 Initializes a `ServerSocket` object and starts the listener thread to accept peer connections.
 
 #### Methods
