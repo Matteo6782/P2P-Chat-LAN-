@@ -1,5 +1,5 @@
 # P2P-Chat-LAN-
-Java P2P Chat Application
+
 This Java-based Peer-to-Peer (P2P) chat application enables local communication, allowing users to exchange messages seamlessly within a network. The application offers two distinct modes of connection: direct connection using the recipient's IP address and port, or through a STUN server registration for centralized contact management.
 
 Features:
