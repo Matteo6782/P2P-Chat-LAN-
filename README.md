@@ -25,61 +25,57 @@ Retrieval of necessary connection information from the server for establishing c
 ### 1. Class: Actor
 
 #### Description
-
-The Actor class represents the main actor of the system. It contains a `ServerConnection` object to handle the server connection and a `PeerHandler` object to manage peer-to-peer connections.
+The `Actor` class represents the main actor of the system. It contains a `ServerConnection` object to handle the server connection and a `PeerHandler` object to manage peer-to-peer connections.
 
 #### Constructor
+Initializes an instance of `ServerConnection` and `PeerHandler` upon application startup.
 
-```java
-public Actor()
-Initializes an instance of ServerConnection and PeerHandler upon application startup.
+#### Methods
+- `offlineLogin()`: Sets the main application panel to `PeerJPanel`.
+- `getServerConnection()`: Returns the `ServerConnection` object.
+- `getPh()`: Returns the `PeerHandler` object.
 
-Methods
-offlineLogin(): Sets the main application panel to PeerJPanel.
-getServerConnection(): Returns the ServerConnection object.
-getPh(): Returns the PeerHandler object.
-2. Class: ServerConnection
-Description
-The ServerConnection class manages the connection to the server and communication with it.
+### 2. Class: ServerConnection
 
-Constructor
-java
-Copy code
-public ServerConnection(Actor actor, String configFilePath)
+#### Description
+The `ServerConnection` class manages the connection to the server and communication with it.
+
+#### Constructor
 Initializes a connection to the server by reading the address and port from the configuration file.
 
-Methods
-connect(): Attempts to establish a connection to the server.
-tryConnection(): Tries to connect to the server and starts the listener thread.
-startServerListener(): Starts a new thread to listen for responses from the server.
-login(String nome, String password, String ip, String port): Sends a login request to the server.
-register(String ID, String nome, String password, String IP, String Port): Sends a registration request to the server.
-newContact(String name, String UUID): Sends a request to the server to create a new contact.
-getContact(): Sends a request to the server to retrieve its contact list.
-processServerResponse(String serverResponse): Processes the response received from the server.
-sendMsgToServerTracker(String msg): Sends a message to the server.
-closeAfterException(): Shuts down the connection in case of an exception.
-serverTrackerOffline(): Handles the case when the server tracker is offline.
-Other getter methods to retrieve information about the connection.
-3. Class: PeerHandler
-Description
-The PeerHandler class manages peer-to-peer connections and keeps track of the peer list.
+#### Methods
+- `connect()`: Attempts to establish a connection to the server.
+- `tryConnection()`: Tries to connect to the server and starts the listener thread.
+- `startServerListener()`: Starts a new thread to listen for responses from the server.
+- `login(String nome, String password, String ip, String port)`: Sends a login request to the server.
+- `register(String ID, String nome, String password, String IP, String Port)`: Sends a registration request to the server.
+- `newContact(String name, String UUID)`: Sends a request to the server to create a new contact.
+- `getContact()`: Sends a request to the server to retrieve its contact list.
+- `processServerResponse(String serverResponse)`: Processes the response received from the server.
+- `sendMsgToServerTracker(String msg)`: Sends a message to the server.
+- `closeAfterException()`: Shuts down the connection in case of an exception.
+- `serverTrackerOffline()`: Handles the case when the server tracker is offline.
+- Other getter methods to retrieve information about the connection.
 
-Constructor
-java
-Copy code
-public PeerHandler()
-Initializes a ServerSocket object and starts the listener thread to accept peer connections.
+### 3. Class: PeerHandler
 
-Methods
-startPeerListener(): Starts a new thread to listen for incoming connections from other peers.
-processServerSocketResponse(String msg): Processes the message received from other peers.
-handleConnectionRequest(String info): Handles the connection request from another peer.
-closeAfterException(): Handles application shutdown in case of an exception.
-Other getter methods to retrieve information about the connection.
-4. Class: PasswordHasher
-Description
-The PasswordHasher class provides a static method for hashing passwords using the SHA-256 algorithm.
+#### Description
+The `PeerHandler` class manages peer-to-peer connections and keeps track of the peer list.
 
-Methods
-hashPassword(String password): Returns the hash of the provided password.
+#### Constructor
+Initializes a `ServerSocket` object and starts the listener thread to accept peer connections.
+
+#### Methods
+- `startPeerListener()`: Starts a new thread to listen for incoming connections from other peers.
+- `processServerSocketResponse(String msg)`: Processes the message received from other peers.
+- `handleConnectionRequest(String info)`: Handles the connection request from another peer.
+- `closeAfterException()`: Handles application shutdown in case of an exception.
+- Other getter methods to retrieve information about the connection.
+
+### 4. Class: PasswordHasher
+
+#### Description
+The `PasswordHasher` class provides a static method for hashing passwords using the SHA-256 algorithm.
+
+#### Methods
+- `hashPassword(String password)`: Returns the hash of the provided password.
