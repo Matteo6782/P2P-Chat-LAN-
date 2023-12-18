@@ -28,10 +28,9 @@ Retrieval of necessary connection information from the server for establishing c
 The `Actor` class represents the main actor of the system. It contains a `ServerConnection` object to handle the server connection and a `PeerHandler` object to manage peer-to-peer connections.
 
 #### Constructor
-
-'''java
+```java
 public Actor()
-
+```
 Initializes an instance of `ServerConnection` and `PeerHandler` upon application startup.
 
 #### Methods
