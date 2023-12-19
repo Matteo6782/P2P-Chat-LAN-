@@ -22,7 +22,7 @@ Retrieval of necessary connection information from the server for establishing c
 
 ## Package: ChatP2P
 
-### 1. Class: Actor
+### Class: Actor
 
 #### Description
 The `Actor` class represents the main actor of the system. It contains a `ServerConnection` object to handle the server connection and a `PeerHandler` object to manage peer-to-peer connections.
@@ -38,7 +38,7 @@ Initializes an instance of `ServerConnection` and `PeerHandler` upon application
 - `getServerConnection()`: Returns the `ServerConnection` object.
 - `getPh()`: Returns the `PeerHandler` object.
 
-### 2. Class: ServerConnection
+### Class: ServerConnection
 
 #### Description
 The `ServerConnection` class manages the connection to the server and communication with it.
@@ -63,7 +63,7 @@ Initializes a connection to the server by reading the address and port from the 
 - `serverTrackerOffline()`: Handles the case when the server tracker is offline.
 - Other getter methods to retrieve information about the connection.
 
-### 3. Class: PeerHandler
+### Class: PeerHandler
 
 #### Description
 The `PeerHandler` class manages peer-to-peer connections and keeps track of the peer list.
@@ -81,7 +81,7 @@ Initializes a `ServerSocket` object and starts the listener thread to accept pee
 - `closeAfterException()`: Handles application shutdown in case of an exception.
 - Other getter methods to retrieve information about the connection.
 
-### 4. Class: PasswordHasher
+### Class: PasswordHasher
 
 #### Description
 
@@ -90,6 +90,7 @@ The `PasswordHasher` class provides a static method for hashing passwords using 
 #### Methods
 - `hashPassword(String password)`: Returns the hash of the provided password.
 
+#### --------------------------
 
 ## Package: servertracker
 
