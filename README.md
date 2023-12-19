@@ -20,7 +20,7 @@ Retrieval of necessary connection information from the server for establishing c
 
 # Code Documentation
 
-## Package: Mainpackage
+## Package: ChatP2P
 
 ### 1. Class: Actor
 
@@ -84,7 +84,70 @@ Initializes a `ServerSocket` object and starts the listener thread to accept pee
 ### 4. Class: PasswordHasher
 
 #### Description
+
 The `PasswordHasher` class provides a static method for hashing passwords using the SHA-256 algorithm.
 
 #### Methods
 - `hashPassword(String password)`: Returns the hash of the provided password.
+
+
+## Package: servertracker
+
+### Class: ServerTracker
+
+#### Description
+The ServerTracker class is the main component of the server system, responsible for handling incoming connections, managing clients, and interacting with the database.
+
+#### Constructor
+```java
+public ServerTracker(JTextArea jTextAreaLog)
+```
+Initializes the server with a JTextArea for logging, establishes a ServerSocket on port 9898, and connects to the database.
+
+#### Methods
+- `quit()`: Gracefully shuts down the server, clears the peer list, and closes connections.
+- `getListener()`: Returns the thread responsible for listening to incoming client connections.
+
+
+### Class: ServerAction
+
+#### Description
+The ServerAction class manages interactions with the MySQL database, handling user registration, login, contact management, and peer information.
+
+#### Constructor
+```java
+public ServerAction(String addr)
+```
+Initializes the server action with the server's IP address.
+
+#### Methods
+- `DatabaseConnection()`: Establishes a connection to the MySQL database.
+- `register(String ID, String name, String password, String IP, String porta)`: Registers a new user in the database.
+- `login(String name, String password, String ip, String port)`: Handles user login and updates the user's IP and port.
+- `newContact(String nome, String UUID, String peerID)`: Adds a new contact to the user's contact list.
+- `getContact(String UUID)`: Retrieves the contact list for a user.
+- `removePeer(String ip, String port, ClientHandler c)`: Removes a peer from the server's list and updates their IP and port to NULL.
+- `onServerClose()`: Handles actions when the server is closing.
+Other utility methods to interact with the database.
+
+### Class: ClientHandler
+#### Description
+The ClientHandler class represents a thread that handles communication with a connected peer. It processes client requests, communicates with ServerAction, and manages the connection.
+
+#### Constructor
+```java
+public ClientHandler(Socket s, ServerAction serverAction)
+```
+Initializes the client handler with a socket and server action instance.
+
+#### Methods
+- `run()`: Overrides the run method to continuously read messages from the client.
+- `clientRequest(String clientMsg)`: Processes client requests based on the received message.
+- `closeAll()`: Closes all streams and removes the peer from the server's list.
+- `reply(String msg)`: Sends a reply message to the connected peer.
+- `getSocket()`: Returns the socket associated with the client handler.
+
+
+
+
+
