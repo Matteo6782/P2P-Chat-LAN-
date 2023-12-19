@@ -106,7 +106,7 @@ public ServerTracker(JTextArea jTextAreaLog)
 Initializes the server with a JTextArea for logging, establishes a ServerSocket on port 9898, and connects to the database.
 
 #### Methods
-- `quit()`: Gracefully shuts down the server, clears the peer list, and closes connections.
+- `quit()`: Shuts down the server, clears the peer list, and closes connections.
 - `getListener()`: Returns the thread responsible for listening to incoming client connections.
 
 
